@@ -5,6 +5,7 @@ import com.SW.transactionLogApplication.Service.TransactionService;
 import com.SW.transactionLogApplication.pojo.SearchType;
 import com.SW.transactionLogApplication.pojo.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -43,30 +44,40 @@ public class transactionController {
     @PostMapping("/post")
     @ResponseBody
     public String addlog(Transaction transaction) {
-        transactionMapper.addTransaction(transaction);
-        return "OKAY";
+        try {
+            transactionMapper.addTransaction(transaction);
+            return "OKAY";
+        } catch (Exception e) {
+            return "Item can not be added";
+        }
     }
 
     @PutMapping("/update")
     @ResponseBody
     public String updatelog(Transaction transaction) {
-        transactionMapper.updateTransaction(transaction);
-        return "Update OKAY";
+        try {
+            transactionMapper.updateTransaction(transaction);
+            return "Update OKAY";
+        } catch (Exception e) {
+            return "Item can not be updated";
+        }
     }
 
     @PostMapping("/update")
     public String updatelogByPost(Transaction transaction) {
         transactionMapper.updateTransaction(transaction);
-        //System.out.println("------------- " + transaction.getAmount() + " " + transaction.getName() + " " + transaction.getID() + " " + transaction.getDate() + " " + transaction.getPurpose());
         return "redirect:/landing";
     }
 
     @GetMapping("/delete")
-    //@ResponseBody
     public String deletelog(@RequestParam(defaultValue = "0") int ID) {
-        transactionMapper.deleteTransaction(ID);
-        System.out.println(ID);
-        return "redirect:/landing";
+        try {
+            transactionMapper.deleteTransaction(ID);
+            System.out.println(ID);
+            return "redirect:/landing";
+        } catch (Exception e) {
+            return "redirect:/landing";
+        }
     }
 
     @GetMapping("/add")
@@ -90,15 +101,6 @@ public class transactionController {
     }
 
 
-
-/*
-    @PostMapping("/viewS")
-    public String viewSpecificItem(SearchType searchType, Model model) {
-        List<Transaction> result = transactionMapper.getSpecifyItem(searchType);
-        model.addAttribute("data", result);
-        return "viewS";
-    }
-*/
 
     @PostMapping("/add")
     public String AddLog(Transaction transaction) {
