@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>TransitionLog</title>
+    <link rel="stylesheet" th:href="@{index.css}">
+</head>
+<body>
+<!-- your content here... -->
+<nav class="nav-bar">
+    <h2 id="nav-text">
+        Transaction System
+    </h2>
+</nav>
+<div class="side-bar">
+    <ul id="list">
+        <a class="link" th:href="@{/landing}"> <li class="list-item">
+            View Table
+        </li></a>
+        <a class="link" th:href="@{/viewS}"> <li class="list-item">
+            View Specific Item
+        </li></a>
+        <a class="link" th:href="@{/add}"><li class="list-item">
+            Add a new entry
+        </li></a>
+
+
+    </ul>
+</div>
+
+<div class="main-content">
+    <table id="table">
+        <tr class="table-row">
+            <th style="width:5%">ID</th>
+            <th style="width:10%">Name</th>
+            <th style="width:10%">Date</th>
+            <th style="width:15%">Amount</th>
+            <th style="width:20%">Purpose</th>
+            <th>Note</th>
+            <th style="width:15%">Action</th>
+        </tr>
+        <tr class="table-row" th:each="item : ${data}">
+            <td th:text="${item.ID}"></td>
+            <td th:text="${item.name}"></td>
+            <td th:text="${item.date}"></td>
+            <td th:text="${item.amount}"></td>
+            <td th:text="${item.purpose}"></td>
+            <td th:text="${item.note}"></td>
+            <td><a th:href="@{/delete(ID=${item.ID})}" class="delete-btn btn"> Del </a>
+                <a th:href="@{/update(ID=${item.ID})}" class="edit-btn btn"> Edit  </a></td>
+        </tr>
+      <!--
+            <td>1</td>
+            <td>Genshin</td>
+            <td>2021-09-20</td>
+            <td>99.99</td>
+            <td>For Rolling</td>
+            <td>Lol I shouldn't do it</td>
+            <td>
+                <button class="delete-btn btn">
+                    Del
+                </button>
+                <button class="edit-btn btn">
+                    Edit
+                </button>
+            </td>
+            -->
+
+    </table>
+</div>
+
+
+
+</body>
+</html>

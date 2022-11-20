@@ -1,0 +1,93 @@
+<!doctype html>
+
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Transaction Log</title>
+  <meta name="description" content="A transaction log system built with Java">
+  <meta name="author" content="Primo Realm">
+
+    <link rel="stylesheet" th:href="@{views.css}">
+</head>
+
+
+<body>
+<!-- your content here... -->
+<nav class="nav-bar">
+    <h2 id="nav-text">
+        Transaction System
+    </h2>
+</nav>
+<div class="side-bar">
+    <ul id="list">
+        <a class="link" th:href="@{/landing}"> <li class="list-item">
+            View Table
+        </li></a>
+        <a class="link" th:href="@{/viewS}"> <li class="list-item">
+            View Specific Item
+        </li></a>
+        <a class="link" th:href="@{/add}"><li class="list-item">
+            Add a new entry
+        </li></a>
+
+
+    </ul>
+</div>
+
+<div class="main-content">
+
+    <div>
+        <form id="search" method="get" th:action="@{/viewS}">
+            <div class="search-container">
+                <h2 class="label">Search By ID</h2>
+                <input class="input-field" type="text" name="idSearch"> <br>
+            </div>
+
+            <div class="search-container">
+                <h2 class="label">Search By Category</h2>
+                <input class="input-field" type="text"name="categorySearch"> <br>
+            </div>
+
+
+            <input class="search-btn" type="submit" value="Search"><br>
+
+        </form>
+
+
+
+    </div>
+    <table id="table">
+        <tr class="table-row">
+            <th style="width:5%">ID</th>
+            <th style="width:10%">Name</th>
+            <th style="width:10%">Date</th>
+            <th style="width:15%">Amount</th>
+            <th style="width:20%">Purpose</th>
+            <th>Note</th>
+            <th style="width:15%">Action</th>
+        </tr>
+
+        <div th:if="${data != null}">
+        <tr class="table-row" th:each="item : ${data}">
+            <td th:text="${item.ID}"></td>
+            <td th:text="${item.name}"></td>
+            <td th:text="${item.date}"></td>
+            <td th:text="${item.amount}"></td>
+            <td th:text="${item.purpose}"></td>
+            <td th:text="${item.note}"></td>
+            <td><a th:href="@{/delete(ID=${item.ID})}" class="delete-btn btn"> Del </a>
+                <button class="edit-btn btn"> Edit </button></td>
+        </tr>
+        </div>
+
+
+
+    </table>
+</div>
+
+
+
+</body>
+</html>

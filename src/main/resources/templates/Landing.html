@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Landing Page</title>
+</head>
+<body>
+<h1>Hello </h1>
+<div th:each="da : ${data}">
+    <p th:text="${da.ID}"></p>
+    <p th:text="${da.name}"></p>
+    <p th:text="${da.amount}"></p>
+    <p th:text="${da.purpose}"></p>
+    <p th:text="${da.date}"></p>
+    <p th:text="${da.note}"></p>
+</div>
+
+<form>
+    <input name="name">
+    <input type="submit">
+</form>
+
+<!-- Making the form be able to search all items with specific name-->
+
+</body>
+</html>

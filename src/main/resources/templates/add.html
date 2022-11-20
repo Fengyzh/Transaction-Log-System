@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>TransitionLog</title>
+    <link rel="stylesheet" th:href="@{add.css}">
+</head>
+<body>
+<!-- your content here... -->
+
+<nav class="nav-bar">
+    <h2 id="nav-text">
+        Transaction System
+    </h2>
+</nav>
+<div class="side-bar">
+    <ul id="list">
+        <a id="link" th:href="@{/landing}"> <li class="list-item">
+            View Table
+        </li></a>
+        <li class="list-item">
+            View Specific Item
+        </li>
+    </ul>
+</div>
+
+<div class="main-content">
+
+    <form id="form" method="post" th:action="@{/add}">
+        <h2 class="label"> Name:</h2>
+        <input class="input-field" type="text" id="name" name="Name" required> <br>
+
+        <h2 class="label">Date:</h2>
+        <input class="input-field" type="date" id="date" name="Date" required> <br>
+
+        <h2 class="label">Amount:</h2>
+        <input class="input-field" type="text" id="amount" name="Amount" required><br>
+
+        <h2 class="label">Purpose:</h2>
+        <input class="input-field" type="text" id="purpose" name="Purpose" required><br>
+
+        <h2 class="label">Note:</h2>
+        <input class="input-field" type="text" id="note" name="Note" required><br>
+        <div>
+            <input class="btn" type="submit" value="Submit"><br>
+        </div>
+    </form>
+
+
+
+</div>
+
+
+
+</body>
+
+
+</html>
