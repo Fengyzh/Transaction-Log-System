@@ -17,7 +17,7 @@
 </nav>
 <div class="side-bar">
     <ul id="list">
-        <a id="link" th:href="@{/landing}"> <li class="list-item">
+        <a id="link" th:href="@{/}"> <li class="list-item">
             View Table
         </li></a>
         <li class="list-item">
@@ -28,7 +28,7 @@
 
 <div class="main-content">
 
-    <form id="form" method="post" th:action="@{/add}">
+    <form id="form" method="post" th:action="@{/items}">
         <h2 class="label"> Name:</h2>
         <input class="input-field" type="text" id="name" name="Name" required> <br>
 
